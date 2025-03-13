@@ -1,0 +1,33 @@
+<h1>All Posts</h1>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Category</th>
+                    <th>Comments</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each posts}}
+                    <tr>
+                        <td><input type="checkbox" name="post_id"></td>
+                        <td>{{_id}}</td>
+                        <td><img src="/uploads/{{post_image}}" class="img-responsive" height="40"></td>   
+                        <td><a href="/post/{{_id}}">{{title}}</a></td>    
+                        <td>{{status}}</td>
+                        <td>{{category.name}}</td>
+                        <td>{{allowComments}}</td>
+                        <td>{{generateDate date 'MMMM, Do YYYY'}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

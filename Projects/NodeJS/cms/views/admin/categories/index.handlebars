@@ -1,0 +1,55 @@
+<h1>Categories</h1>
+{{#each errors}}
+<div class="alert alert-danger">
+    {{message}}
+</div>
+{{/each}}
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/categories/store" method="post">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Create Category">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Created At</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each categories}}
+                            <tr>
+                                <td>{{_id}}</td>
+                                <td>{{name}}</td>
+                                <td>{{generateDate date 'MMMM, Do YYYY'}}</td>
+                                <td><a href="/admin/categories/edit/{{_id}}" class="btn btn-sm btn-info">Edit</a></td>
+                                <td>
+                                    <form action="/admin/categories/delete/{{_id}}?_method=DELETE" method="post">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

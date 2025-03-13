@@ -1,0 +1,38 @@
+<h1>All Comments</h1>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Owner</th>
+                    <th>Comment</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each comments}}
+                    <tr>
+                        <td>{{_id}}</td>
+                        <td>{{user.firstName}} {{user.lastName}}</td>    
+                        <td>{{body}}</td>
+                        <td><input type="checkbox" data-toggle="switchbutton" data-onstyle="primary" data-offstyle="secondary" name="approveComment" class="approveComment" data-id="{{_id}}" {{#if approveComment}} checked {{/if}}></td>
+                        <td>{{generateDate date 'MMMM, Do YYYY'}}</td>
+                        {{!-- <td>{{category.name}}</td>
+                        <td>{{allowComments}}</td>
+                        <td>{{generateDate date 'MMMM, Do YYYY'}}</td>
+                        <td><a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-info">Edit Post</a></td> --}}
+                        <td>
+                            <form action="/admin/comments/delete/{{_id}}?_method=DELETE" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete Comment</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
